@@ -1,0 +1,198 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+.cookies{
+    position: fixed;
+    bottom: 0;
+    z-index: 50;
+    width: 100%;
+    background: $white;
+    @include flex__column;
+    align-items: center;
+    padding-bottom: $gutterwidth/2;
+    box-shadow: $box-shadow;
+    
+    p{
+        margin: $gutterwidth/2 $gutterwidth;
+        text-align: center;
+    }
+
+    
+    //768
+    @include respond-to('medium') {
+        bottom: 74px;
+    }
+}
+
+footer{
+    margin-top: $gutterwidthspecial;
+
+    section{
+
+        &:first-child{
+            @include flex__center;
+            background-color: $lightgray;
+            padding: $gutterwidth+$gutterwidth;
+
+            ul{
+                @include flex__column;
+                margin: 0;
+                line-height: 1.5;
+
+                a{
+                    color: $gray;
+                    font-size: fs(small);
+
+                    &:hover{
+                        color: $basecolor;
+                    }
+                }
+
+                & + div{
+                    @include flex__column;
+                    align-items: center;
+                    width: 22%;
+
+                    p{
+                        font-size: fs(large);
+                        font-weight: bold;    
+                        margin-top: 0;
+                        text-align: center;
+                    }
+                }
+            }
+            
+            [class^="btn-"]{
+                font-family: $secondfont;
+            }
+        }
+
+        &:last-child{
+            @include flex__center;
+            background-color: $basecolor;
+            padding: $gutterwidth/2;
+        
+            .links a{
+                color: $white;
+                font-size: fs(small);
+                text-decoration: underline;
+
+                &:hover{
+                    text-decoration: none;
+                    transition: text-decoration 
+                }
+
+                &:after{
+                    content: "|";
+                    padding-left: $gap;
+                }
+            }
+
+            .links a:last-child:after{
+                content: "";
+            }
+        }
+
+        
+        & > div{
+            @include flex__between-center;
+            max-width: $pagemaxwidth;
+            width: $pagemaxwidth;
+        }
+    }
+    
+    //1024
+    @include respond-to('large') {
+        section{
+
+            &:first-child{
+
+                div{
+                    flex-wrap: wrap;
+
+                    ul{
+                        &:nth-child(1){
+                            order: 2;
+                        }
+                        &:nth-child(2){
+                            order: 3;
+                        }
+                        &:nth-child(3){
+                            order: 4;
+                        }
+
+                        & + div{
+                            @include flex__center;
+                            flex-direction: row;
+                            width: 100%;
+                            order: 1;
+                            margin-bottom: $gutterwidth;
+
+                            p{
+                                width: 25%;
+                                text-align: right;
+                                margin: 0 $gutterwidth 0 0;
+                            }
+                        }
+                    }
+                }                
+            }
+
+            &:last-child{
+                & > div{
+                    flex-direction: column;
+                }
+                .links{
+                    margin-bottom: $gutterwidth/2;
+                }
+            }
+        }
+    }
+
+    //768
+    @include respond-to('medium') {
+        margin-bottom: 77px;
+
+        section{
+
+            &:first-child{
+                div{
+                    flex-direction: column;
+
+                    ul{
+                        width: 100%;
+                        padding-left: 0;
+
+                        li{
+                            margin-bottom: $gutterwidth/2;
+                        }
+
+                        & + div{
+                            p{
+                                width: 100%;
+                                text-align: center;
+                                margin: 0 0 $gutterwidth/2 0;
+                            }
+                        }                    
+                    }                    
+                }
+            }
+
+            &:last-child{
+                .links{
+                    @include flex__column;
+                    width: 100%;
+
+                    a{
+                        text-decoration: none;
+                        margin: 0 0 $gutterwidth/2 0;
+
+                        &:after{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

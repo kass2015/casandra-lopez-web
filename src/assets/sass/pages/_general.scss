@@ -1,0 +1,92 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the pages.
+// -----------------------------------------------------------------------------
+
+
+//[class^="btn-"]
+
+.curriculum{
+    margin-bottom: $gutterwidth*2;
+    
+    .txt{
+        p{
+            span{
+                font-weight: bold;
+                color: $secondcolor;
+            }
+        }
+    }
+
+    //414
+	@include respond-to('small') {
+        max-width: calc(768px - #{$gutterwidth*2});
+	}
+}
+
+.weather{
+    @include flex__center;
+    flex-wrap: wrap;
+    margin-bottom: $gutterwidth*2;
+
+    .txt{
+        text-align: center;
+    }
+
+    .data{
+        margin-top: $gutterwidth;
+        ul{
+            @include flex__between-center;
+            flex-wrap: wrap;
+            padding-left: 0;
+            margin-bottom: 0;
+    
+            a{
+                min-width: 15%;
+            }
+            
+            li{
+                @include flex__column;
+                width: 47%;
+                margin-top: $gutterwidth;
+                background-color: $lightgreen;
+                padding: $gutterwidth;
+                box-shadow: $box-shadow-bottom;
+    
+                &:hover{
+                    background-color: $lightgray;
+                    box-shadow: $box-shadow-bottom-hover;
+                }
+    
+                &:first-child, &:nth-child(2){
+                    margin-top: 0;
+                }
+
+                > div{
+                    @include flex__column;
+                    font-family: $secondfont;
+                    color: $basecolor;
+                    font-weight: bold;
+                    margin-bottom: $gutterwidth/2;
+    
+                    span{
+                        font-family: $basefont;
+                        color: $principalcolor;
+                        font-weight: normal;
+                    }
+
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    //414
+	@include respond-to('small') {
+        .txt{
+            max-width: calc(768px - #{$gutterwidth*2});
+        }
+	}
+
+}

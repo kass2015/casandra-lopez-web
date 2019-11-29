@@ -1,0 +1,163 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+
+//Font Face
+$basefont : 'Roboto', sans-serif;
+$secondfont : 'Montserrat', sans-serif;
+$baseheadingfont : inherit;
+$baseheadingfontweight : bold;
+$baseheadingfontcolor : inherit;
+
+//Font size
+$size-vars: (
+	"xs-small"  :    .56,
+	"s-small"  :    .75,
+	"small"    :    .87,
+	"normal"   :    1,
+	"medium"   :    1.25,
+	"large"    :    1.5,
+	"s-big"    :    1.75,
+	"big"      :    2.5,
+	"icon-huge":    3.5,
+	"huge"     :    9,
+);
+
+//Layout
+$baselineheight :     1.3em;
+$baseline :           $baselineheight;
+$gutterwidth :        24px;
+$gutterwidthspecial:  36px;
+$pagemaxwidth :       1280px;
+$paddinglayout :      2.5%;
+$radius :             18px;
+$radiussmall :        4px;
+$transition:          250ms cubic-bezier(0.5, 0, 0.1, 1);
+$hovertransition :    .3s cubic-bezier(0.5, 0, 0.1, 1);
+$animationtime :      .5s;
+$animationdelay:      .5s;
+$cubic-bezier  :      cubic-bezier(0.5, 0, 0.1, 1);
+$pulseDuration:       0.5s;
+$modal :              rgba(0,0,0,0.6);
+
+//Grid
+$gap : $gutterwidth / 4;
+$grid-size: 12;
+
+//Colores
+$black        : rgb(0,0,0);
+$white        : rgb(255,255,255);
+$darkgray     : #232323;
+$gray		  : #7A7A7A;
+$brown        : #8d6c6c;
+$darkbrown    : #3F3E3E;
+$mediumgray   : #E5E5E5;
+$lightgray    : #FAFAFA;
+$darkgreen    : #A1BF37;
+$green        : #A3BF2A;
+$lightgreen   : #f7ffd6;
+$darkblue     : #495371;
+$blue         : #009EE0;
+$lightblue    : #78D7FF;
+$magenta      : #FF0083;
+$darkmagenta  : #DB0080;
+
+// Variable map colors
+// Para usar un color:
+// .className {color: color(blue);}
+$colors: (
+    "black      "  : $black,
+    "white      "  : $white,
+    "gray       "  : $gray,
+	"darkgray   "  : $darkgray,
+	"mediumgray "  : $mediumgray,
+    "lightgray  "  : $lightgray,
+    "green      "  : $green,
+    "blue       "  : $blue,
+    "lightblue  "  : $lightblue,
+	"magenta"      : $magenta,
+	"darkmagenta"  : $darkmagenta,
+);
+
+$basecolor			: $darkgreen;
+$secondcolor		: $brown;
+$seconddarkcolor    : $darkbrown;
+$principalcolor		: $darkgray;
+
+$bordercolor       : #E0E0E0;
+$borderhr          : rgba($lightgray, .5);
+$hovercolor        : #ef0000;
+$sidebarcolor      : #ccccff;
+$gradientSlider    : linear-gradient(0deg, rgba(35, 35, 35, 0.5), rgba(35, 35, 35, 0.5));
+$matrixSlider      : matrix(-1, 0, 0, 1, 0, 0);
+
+//Shadows
+$box-shadow :         0px 0px 10px rgba(0, 0, 0, 0.1);
+$box-shadow-complete: 0px 4px 25px rgba(0, 55, 129, 0.17);
+$box-shadow-ul:       1px -2px 9px rgba(73, 83, 113, 0.07);
+$box-shadow-li:       0px 0px 12px rgba(0, 0, 0, 0.08);
+$box-shadow-bottom:   0px 4px 4px rgba(0, 0, 0, 0.06);
+$box-shadow-bottom-hover:   inset 0px 4px 4px rgba(35, 35, 35, 0.05);
+$text-shadow:		  0 0 .65px #333, 0 0 .65px #333;
+$text-blue-shadow:	  0 0 .65px $blue, 0 0 .65px $blue;
+
+//Web
+$background       : $white;
+$textcolor        : $darkgray;
+$textcolor-strong : $black;
+
+//Links
+$linkcolor        : $basecolor;
+$linkcolorhover   : $principalcolor;
+$linkcolorvisited : $basecolor;
+$linkcolorfocus   : $basecolor;
+
+//Buttons
+$buttoncolor        : $basecolor;
+$buttoncolorhover   : $basecolor;
+$buttoncoloractive  : $white;
+$buttonradius       : 40px;
+$buttonopacity      : 0.5;
+$buttonshadow       : 0 0 30px 0 rgba($basecolor, 0.4);
+
+//Texturas
+$color-alert      : rgb(252,228,207);
+$color-error      : $darkmagenta;
+$color-info       : #a4e1e4;
+$color-inverse    : invert($principalcolor);
+$color-success    : $blue;
+$color-warning    : $color-error;
+
+// tablas
+$tablebackground    : $background;
+$tablestripe        : lighten($basecolor, 60%);
+$tablehover         : $lightgray;
+$tableborder        : $bordercolor;
+$tableborderwidth   : 1px;
+$tableborderstyle   : solid;
+
+// formularios
+$inputbackground    : $white;
+$inputborder        : $bordercolor;
+$inputfocus         : $basecolor;
+$placeholdercolor   : $lightgray;
+$inputanimation     : all .4s ease-in-out;
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+	'xs-small'	: 321px,
+	'small'		: 415px,
+	'medium'	: 769px,
+	'large'		: 1025px,
+	's-big'		: 1281px,
+	'big'		: 1601px,
+) !default;
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+$base-url: '/assets/' !default;

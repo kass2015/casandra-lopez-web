@@ -1,0 +1,82 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+[class^="btn-"] {
+    text-transform: uppercase;
+    padding: $gutterwidth/3 $gutterwidth;
+    display: inline-block;
+    font-family: $basefont;
+    font-weight: bold;
+    font-size: fs(normal);
+    vertical-align: middle;
+    text-align: center;
+    outline: 0;
+    line-height: initial;
+    color: $white;
+    border-radius: $radiussmall;
+    border: none;
+    min-width: 19rem;
+    transition: background-color $animationtime;
+    cursor: pointer;
+
+    &:active, &:focus{
+        color: $white;
+    }
+
+    &.ico{
+        @include flex__center;
+        font-size: fs(large);
+        min-width: 12.2rem;
+
+        img{
+            max-width: 30px;
+            padding-right: $gap;
+        }
+    }
+    //768
+    @include respond-to('medium') {
+        &.ico{
+        padding: $gutterwidth/3 $gutterwidth/2;
+       // font-size: fs(small);
+
+        }
+    }
+
+    //414
+    @include respond-to('small') {
+        min-width: 100%;
+    }
+}
+
+.btn-site{
+    background-color: $basecolor;
+
+    &:hover{
+        background-color: $lightblue;
+        color: $white;
+        transition: background-color $animationtime;
+    }
+}
+
+.btn-second{
+    background-color: $secondcolor;
+
+    &:hover{
+        background-color: $seconddarkcolor;
+        color: $white;
+        transition: background-color $animationtime;
+    }
+}
+
+.btn-third{
+    background-color: $white;
+    color: $basecolor;
+    border: 1px solid $basecolor;
+
+    &:hover{
+        background-color: $basecolor;
+        color: $white;
+        transition: background-color $animationtime;
+    }
+}

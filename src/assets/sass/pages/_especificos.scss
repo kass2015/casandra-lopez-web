@@ -1,0 +1,12 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the pages.
+// -----------------------------------------------------------------------------
+
+.textos-legales{
+    .h1, .h2{
+        color: $basecolor;
+    }
+    .h2{
+        text-align: left;
+    }
+}

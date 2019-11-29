@@ -1,0 +1,303 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+/** {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}*/
+
+html {
+	box-sizing: border-box;
+	font-size: 100%;
+	font-family: $basefont;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	font-family: $basefont;
+	background-color: $white;
+
+
+	//1024
+	@include respond-to('large') {
+		overflow-x: hidden;
+		min-width: 100%;
+		width: 100%;
+	}
+
+}
+
+.bloqueo{
+	overflow-y: hidden;
+    position: fixed!important;
+    -webkit-overflow-scrolling: auto;
+    width: 100%;
+}
+
+main{
+	@include flex__column;
+	align-items: center;
+	padding-top: 70px;
+
+}
+
+.main {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+article{
+	max-width: calc(100% - #{$gutterwidth*2});
+	//max-width: $pagemaxwidth;
+	width: 100%;
+	margin-top: $gutterwidthspecial;
+
+    .h2{
+		font-weight: bold;
+        text-align: center;
+        margin: $gutterwidth/2 0 $gutterwidth 0;
+	}
+	
+	//414
+	@include respond-to('small') {
+		max-width: calc(100% - #{$gutterwidth*8});
+	}
+
+	//1280
+	@include respond-to('s-big') {
+		max-width: calc(#{$pagemaxwidth} - #{$gutterwidth*2});
+	}
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/**
+ * Basic styles for links
+ */
+a {
+	color: $basecolor;
+	text-decoration: none;
+	cursor: pointer;
+
+	@include on-event {
+		color: $basecolor;
+	}
+}
+
+@each $name, $value in $size-vars {
+	.font--#{$name} {
+		font-size: $value * 16px;
+		font-size: $value * 1rem;
+	}
+}
+
+@function fs($font-size) {
+	@return map-get($size-vars, $font-size) * 1rem;
+}
+
+//forms
+::placeholder {
+	color: #C4C4C4;
+	opacity: 1; //Firefox
+	font-size: fs(normal);
+}
+  
+:-ms-input-placeholder { //Internet Explorer 10-11
+   color: #C4C4C4;
+   font-size: fs(normal);
+}
+  
+::-ms-input-placeholder { // Microsoft Edge
+   color: #C4C4C4;
+   font-size: fs(normal);
+}
+
+.formfield{
+	position: relative;
+}
+
+.input {
+	background-color: $white;
+	font-size: fs(s-small);
+	font-family: "Istok Web", sans-serif;
+	border: 2px solid $inputborder;
+	border-radius: $radiussmall;
+	outline: none;
+	width: 100%;    
+	min-width: 15rem;
+	height: fs(big);
+	margin: 0 0 $gutterwidth/2 0;
+	padding: 0 0 0 $gap;
+	box-shadow: none;
+
+	&:focus {
+		border: 2px solid transparent;
+		border-bottom: 1px solid $inputfocus;
+    	box-shadow: 0 1px 0 0 $inputfocus;
+		+ label {
+			color: $inputfocus;
+		}
+	}
+
+	+div{
+		display: none;
+
+		&.error{
+			display: block;
+		}
+	}
+
+	&.error{
+		border: 2px solid transparent;
+		border-bottom: 1px solid #B70000;
+    	box-shadow: 0 1px 0 0 #B70000;
+	}
+}
+
+// checkbox style css
+.checkbox {    
+	position: relative;
+	margin: 0 0 $gutterwidth/2 0;
+
+	label {
+		color: $gray;
+		font-size: fs(s-small);
+		cursor: pointer;
+
+		a{
+			text-decoration: underline;
+
+			&:hover{
+				text-decoration: none;
+			}
+		}
+
+		+div{
+			display: none;
+
+			&.error{
+				display: block;
+			}
+		}
+	}
+}
+
+input[type="checkbox"]{
+	display: none;
+}
+
+input[type="checkbox"] + label:before{
+	content: "";
+	background: $white;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	border: 2px solid $inputborder;
+	border-radius: $radiussmall;
+	margin-right: $gap;
+	position: relative;
+	top: 3px;
+}
+
+input[type="checkbox"] + label.error:before{
+	content: "";
+	background: $white;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	border: 2px solid #B70000;
+	border-radius: $radiussmall;
+	margin-right: $gap;
+	position: relative;
+	top: 3px;
+}
+
+input[type="checkbox"]:checked + label:before {
+	content: "";
+	background: url("../img/svg/ico-check.svg");
+	background-size: 100%;
+	border: none;
+}
+
+//error
+div.error{
+	position: absolute;    
+	left: -13px;
+	z-index: 1;
+	background: #FFF1F1;
+	border: 1px solid rgba(183, 0, 0, 0.18);
+	box-sizing: border-box;
+	box-shadow: 0px 3px 4px rgba(183, 0, 0, 0.18);
+	font-size: .87rem;
+	padding: 6px 12px;
+	border-radius: 4px;
+	color: #B70000;
+
+	&:before, &:after{
+		content: "";
+		width: 0px;
+		height: 0px;
+		border-left: 8px solid transparent;
+		border-right: 8px solid transparent;
+		border-bottom: 8px solid rgba(183, 0, 0, 0.18);
+		font-size: 0px;
+		line-height: 0px;
+		position: absolute;
+		top: -9px;
+		left: 12px;
+	}
+	&:after{
+		content: "";
+		width: 0px;
+		height: 0px;
+		border-left: 8px solid transparent;
+		border-right: 8px solid transparent;
+		border-bottom: 8px solid #FFF1F1;
+		font-size: 0px;
+		line-height: 0px;
+		position: absolute;
+		top: -7px;
+		left: 12px;
+	}
+
+	&#errorNumber{
+		top: 43px;
+	}	
+	
+	&#errorCheckbox{
+		top: 28px;
+	}
+}
+
+//opacity
+.opacity{
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    background: #000000b3;
+    top: 0;
+    left: 0;
+	z-index: 500;
+	cursor: pointer;
+}
